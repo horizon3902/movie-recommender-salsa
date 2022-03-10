@@ -1,13 +1,21 @@
 # Basic Movie Recommender
 ### Basic content based movie recommendation. 
 
-To run the app: - 
+* [Use this app here](https://share.streamlit.io/horizon3902/movie-recommender-salsa/main/app.py)
 
-1. Run entire `movie_in.ipynb` notebook
-2. Run `pip install requirements.txt` in shell
-3. Run `streamlit run app.py` in shell
+#### OR
 
+* To run the app: - 
 
+  1. Clone the repo
+
+  2. Run entire `movie_in.ipynb` notebook
+
+  3. Run `pip install requirements.txt` in shell
+
+  4. Run `streamlit run app.py` in shell
+
+     
 
 Used basic feature extraction and count vectorization to generate vectors from tags and provide top 5 recommendations.
 
