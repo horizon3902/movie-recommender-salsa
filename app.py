@@ -7,6 +7,8 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+# Python Part
+
 movies_dict = pickle.load(open('data/moviedb_dict.pkl', 'rb'))
 movies_df = pd.DataFrame(movies_dict)
 
@@ -30,22 +32,41 @@ def recommend(movie):
         rec_mov_posters.append(fetch_poster(movie_id))
     return rec_mov_list, rec_mov_posters
 
+# Webapp Part
+
+st.set_page_config(page_title="Movie Recommender", layout="wide")
+
+st.markdown(
+    """
+    <style>
+        #movie-recommendation-app{
+            text-align: center;
+        }
+    </style>
+    """,unsafe_allow_html=True,
+)
+
 st.title("Movie Recommendation App")
 
-fav_movie = st.selectbox(
-    'Enter your favourite movie',
-    movies_df['title'].values
-)
+cols_mov_selectbox = st.columns([3,6,3])
+
+with cols_mov_selectbox[1]:
+    fav_movie = st.selectbox(
+        'Enter your favourite movie',
+        movies_df['title'].values
+    )
 
 if st.button('Recommend'):
     rec_names, posters = recommend(fav_movie)
     st.write(f'Based on your favourite movie, we recommend:')
     
-    col1,col2,col3,col4,col5 = st.columns(5)
-    cols = (col1,col2,col3,col4,col5)
+    cols = st.columns(5)
+    # cols = (col1,col2,col3,col4,col5)
     
     for col in cols:
         with col:
             st.text(rec_names[cols.index(col)])
             st.image(posters[cols.index(col)])
+
+
 
