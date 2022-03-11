@@ -34,15 +34,21 @@ def recommend(movie):
 
 # Webapp Part
 
-st.set_page_config(page_title="Movie Recommender", layout="wide")
+st.set_page_config(page_title="Movie Recommender", page_icon="🎬", layout="wide")
 
 st.markdown(
     """
     <style>
         #movie-recommendation-app{
             text-align: center;
+            margin: -5%;
         }
+        .css-10trblm .e16nr0p33{
+        text-align: center;
+        margin: -10%;
+    }
     </style>
+    
     """,unsafe_allow_html=True,
 )
 
@@ -56,7 +62,12 @@ with cols_mov_selectbox[1]:
         movies_df['title'].values
     )
 
-if st.button('Recommend'):
+cols_rec_button = st.columns([6,1,6])
+
+with cols_rec_button[1]:
+    rec_button  = st.button('Recommend')
+
+if rec_button:
     rec_names, posters = recommend(fav_movie)
     st.write(f'Based on your favourite movie, we recommend:')
     
@@ -65,8 +76,31 @@ if st.button('Recommend'):
     
     for col in cols:
         with col:
-            st.text(rec_names[cols.index(col)])
+            st.write(f"[{rec_names[cols.index(col)]}](https://themoviedb.org/movie/{movies_df[movies_df['title']==rec_names[cols.index(col)]]['movie_id'].values[0]})")
             st.image(posters[cols.index(col)])
 
+
+footer="""<style>
+a:link , a:visited{
+color: white;
+background-color: transparent;
+text-decoration: underline;
+}
+
+.footer {
+position: fixed;
+left: 0;
+bottom: 0;
+width: 100%;
+background-color: #0E1117;
+color: white;
+text-align: left;
+}
+</style>
+<div class="footer">
+<p>Developed by <a style='text-align: left;' href="https://github.com/horizon3902/" target="_blank">Kshitij Agarkar</a></p>
+</div>
+"""
+st.markdown(footer,unsafe_allow_html=True)
 
 
