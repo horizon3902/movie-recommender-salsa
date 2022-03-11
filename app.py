@@ -42,6 +42,7 @@ st.markdown(
         #movie-recommendation-app{
             text-align: center;
             margin: -5%;
+            font-family: 'garamond', sans-serif;
         }
         .css-10trblm .e16nr0p33{
         text-align: center;
@@ -53,6 +54,12 @@ st.markdown(
 )
 
 st.title("Movie Recommendation App")
+st.markdown(
+    """
+    <br></br>
+    
+    """,unsafe_allow_html=True,
+)
 
 cols_mov_selectbox = st.columns([3,6,3])
 
@@ -80,7 +87,8 @@ if rec_button:
             st.image(posters[cols.index(col)])
 
 
-footer="""<style>
+footer="""
+<style>
 a:link , a:visited{
 color: white;
 background-color: transparent;
@@ -88,6 +96,8 @@ text-decoration: underline;
 }
 
 .footer {
+display: flex;
+justify-content: left;
 position: fixed;
 left: 0;
 bottom: 0;
@@ -99,6 +109,7 @@ text-align: left;
 </style>
 <div class="footer">
 <p>Developed by <a style='text-align: left;' href="https://github.com/horizon3902/" target="_blank">Kshitij Agarkar</a></p>
+<a style="margin-left: auto" href="https://github.com/horizon3902/movie-recommender-salsa" data-color-scheme="no-preference: dark; light: light; dark: dark;" aria-label="Watch horizon3902/movie-recommender-salsa on GitHub">View on Github</a>
 </div>
 """
 st.markdown(footer,unsafe_allow_html=True)
