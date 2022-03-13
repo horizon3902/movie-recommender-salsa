@@ -11,7 +11,7 @@
 
   2. Run entire `movie_in.ipynb` notebook
 
-  3. Run `pip install requirements.txt` in shell
+  3. Run `pip install -r requirements.txt` in shell
 
   4. Run `streamlit run app.py` in shell
 
